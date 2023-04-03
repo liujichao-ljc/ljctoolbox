@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 Copyright (C) 2017 TehFront Inc. All rights reserved.
-File  ：__init__.py.py
+File  ：__init__.py
 Author：liujichao.ljc
 Email ：liujichao.ljc@qq.com
 Date  ：2019/8/8 17:20 BeiJing
