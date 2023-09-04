@@ -26,13 +26,13 @@ def commond_execute(cmd, num=0, logger=None):
                 sys.stdout.flush()
             else:
                 break
-    except Exception, e:
+    except Exception as e:
         logger.warn("faile to exe:[%s][%s][%s]" % (num, cmd, e))
         return False
     finally:
         try:
             os.killpg(sub.pid, signal.SIGKILL)
-        except OSError, e:
+        except OSError as e:
             logging.warn("kill group failed gpid:[%s]" % sub.pid)
     return sub.wait() == 0
 
@@ -42,7 +42,7 @@ def worker(func, q, err, lock, param):
         ret = func(param)
         lock.acquire()
         q.put(ret)
-    except Exception, e:
+    except Exception as e:
         err.put("[%s][%s]" % (e, traceback.format_exc()))
     finally:
         lock.release()
@@ -83,7 +83,7 @@ class ProPool(object):
         try:
             self.pool.close()
             self.pool.join()
-        except Exception, e:
+        except Exception as e:
             self.close()
 
     def close(self):

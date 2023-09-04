@@ -4,7 +4,7 @@
 线程池，用于高效执行某些任务。
 """
 
-import Queue
+import queue
 import threading
 import logging
 
@@ -86,15 +86,15 @@ class Pool(object):
         """获取执行结果集
         """
         while not self.output_queue.empty():
-            print "Result: ", self.output_queue.get()
+            print("Result: ", self.output_queue.get())
 
     def show_errors(self):
         """获取执行失败的结果集
         """
         while not self.error_queue.empty():
             func, args, error_info = self.error_queue.get()
-            print "Error: func: %s, args : %s, error_info : %s" \
-                % (func.func_name, args, error_info)
+            print("Error: func: %s, args : %s, error_info : %s" \
+                % (func.func_name, args, error_info))
 
     def run(self):
         """执行
@@ -103,24 +103,3 @@ class Pool(object):
             task.start()
         for task in self.tasks:
             task.join()
-
-
-def test(i,a):
-    """test """
-    print i
-    result = i * 10
-    return result
-
-
-def main():
-    """ main """
-    pool = Pool(size=5)
-    pool.add_tasks([(test, (i,i+1)) for i in range(100)])
-    pool.run()
-
-    for l in pool.result:
-        print l
-
-
-if __name__ == "__main__":
-    main()

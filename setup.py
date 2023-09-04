@@ -4,7 +4,7 @@ from os import path
 here = path.abspath(path.dirname(__file__))
 setup(
     name='ljctoolbox',
-    version='0.0.1',
+    version='0.0.3',
     # packages=['ljctoolbox','ljctoolbox.mjson'],
     packages=find_packages(),
     package_data={'': ['LICENSE']},
@@ -17,7 +17,7 @@ setup(
     author_email='liujichao.ljc@qq.com',
     # Choose your license
     license='GPLv3',
-    python_requires='<=3',
+    python_requires='>=3',
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
